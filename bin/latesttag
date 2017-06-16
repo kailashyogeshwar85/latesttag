@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "checking if it is a valid working copy";
+
+if  git remote -v | grep -q "origin"; then
+	echo "Validated current working copy"
+	echo "Fetching tags from Github ..."
+	git fetch --tags;
+
+	LATEST_TAG="$(git tag --sort=committerdate | tail -1)"
+	echo "Latest tag is $LATEST_TAG"
+		
+else
+	echo "Not a valid Github Repository"
+	exit
+fi
