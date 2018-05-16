@@ -7,7 +7,7 @@ if  git remote -v | grep -q "origin"; then
 	echo "Fetching tags from Github ..."
 	git fetch --tags;
 
-	LATEST_TAG="$(git tag --sort=committerdate | tail -1)"
+	LATEST_TAG="$(git tag --sort=-committerdate | head -n1)"
 	echo "Latest tag is $LATEST_TAG"
 		
 else
